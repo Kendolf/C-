@@ -8,7 +8,10 @@ namespace BitStuff
 {
     public class BitStuff
     {
-        public static uint BitCount(int input) //Bit Count - counts bits in a given number. Negative numbers allowed.
+        public static uint BitCount(int input) 
+            /*
+             * Bit Count - counts bits in a given number. Negative numbers allowed. http://www.codeabbey.com/index/task_view/bit-count 
+             */
         {
             uint result = 0;
             uint unum = unchecked((uint)input);
@@ -20,24 +23,21 @@ namespace BitStuff
             return (result);
         }
 
-        public static string ParityControl(string input) //Parity Control - decodes string of byte-sized numbers into ASCII string without numbers with uneven amount of bits. No negative numbers allowed!
+        public static string ParityControl(string input)
+            /*
+             * Parity Control - decodes string of byte-sized numbers into ASCII string without numbers with uneven amount of bits. No negative numbers allowed!
+             * http://www.codeabbey.com/index/task_view/parity-control--ru
+             */
         {
-            string result = "", curnum = "";
-            for (int i = 0; i < input.Length; i++)
+            string[] newinp = input.Split(' ');
+            StringBuilder outp = new StringBuilder();
+            foreach (string num in newinp)
             {
-                if (input[i] != ' ')
-                {
-                    curnum += input[i];
-                }
-                else
-                {
-                    result += (BitCount(int.Parse(curnum)) % 2 == 0 ? Convert.ToString((char)(int.Parse(curnum) & 127)) : "");
-                    curnum = "";
-                }
+                outp.Append(BitCount(int.Parse(num)) % 2 == 0 ? Convert.ToString((char)(int.Parse(num) & 127)) : "");
             }
-            result += (BitCount(int.Parse(curnum)) % 2 == 0 ? Convert.ToString((char)(int.Parse(curnum) & 127)) : "");
-            return (result);
+            return (outp.ToString());
         }
+
     }
 
     public class Programm

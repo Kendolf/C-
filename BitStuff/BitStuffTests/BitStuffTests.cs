@@ -14,19 +14,31 @@ namespace BitStuff.Tests
         [TestMethod()]
         public void BitCountTest_1()
         {
-            Assert.AreEqual((uint)1, BitStuff.BitCount(1));
+            Assert.AreEqual(1, BitStuff.BitCount((int)1));
         }
 
         [TestMethod()]
         public void BitCountTest_100()
         {
-            Assert.AreEqual((uint)3, BitStuff.BitCount(100));
+            Assert.AreEqual(3, BitStuff.BitCount((int)100));
         }
 
         [TestMethod()]
         public void BitCountTest_neg1()
         {
-            Assert.AreEqual((uint)32, BitStuff.BitCount(-1));
+            Assert.AreEqual(32, BitStuff.BitCount((int)-1));
+        }
+
+        [TestMethod()]
+        public void BitCountByteTest_1()
+        {
+            Assert.AreEqual(1, BitStuff.BitCount((byte)1));
+        }
+
+        [TestMethod()]
+        public void BitCountByteTest_100()
+        {
+            Assert.AreEqual(3, BitStuff.BitCount((byte)100));
         }
 
         [TestMethod()]

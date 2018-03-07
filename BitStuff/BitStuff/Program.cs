@@ -8,19 +8,25 @@ namespace BitStuff
 {
     public class BitStuff
     {
-        public static uint BitCount(int input) 
+        public static int BitCount(int input) 
             /*
              * Bit Count - counts bits in a given number. Negative numbers allowed. http://www.codeabbey.com/index/task_view/bit-count 
              */
         {
-            uint result = 0;
+            int result = 0;
             uint unum = unchecked((uint)input);
             while (unum != 0)
             {
-                result = result + (unum & 1);
+                result = result + (int)(unum & 1);
                 unum >>= 1;
             }
             return (result);
+        }
+
+        public static byte BitCount(byte inp)
+        {
+            if (inp == 0xFF) return 8;
+            return (byte)((((UInt64)(0x010101 * inp & 0x249249) * 0x249249) >> 21) & 0x7);
         }
 
         public static string ParityControl(string input)
